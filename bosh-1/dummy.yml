@@ -1,0 +1,23 @@
+name: dummy
+instance_groups:
+- name: dummy
+  instances: 1
+  jobs: []
+  vm_type: minimal
+  azs: [z1]
+  stemcell: default
+  networks:
+  - name: default
+  persistent_disk_type: default
+releases: []
+stemcells:
+- alias: default
+  os: ubuntu-xenial
+  version: latest
+
+update:
+  canaries: 1
+  max_in_flight: 10
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+  initial_deploy_az_update_strategy: serial
