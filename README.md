@@ -2,24 +2,12 @@
 
 A single-box lab environment for vSphere, NSX-T, BOSH, CF and more
 
-## hardware
+## Hardware
 - Standard Dell workstation, Precisoin T5820. 	4 core Intel(R) Xeon(R) W-2223 CPU @ 3.60GHz/500GB NVME/32GB RAM
 - Add more disks. 1 x 2TB NVME replacing the 500GB NVME. 2 x 2TB SATA SSD
 - Add more RAM. 4 x 32GB (Kingston KSM26RD4/32MEI)
 
 After upgrade, the workstaton has 4 core, 6TB disk space, 160 GB mem.
-
-## ip addresses
-
-192.168.1.x | host
--|-
-1  | gw, dns
-5  | jumpbox
-6  | bosh-1
-88 | native ESXi
-89 | vcenter
-90-92 | vsan ESXi
-100-109 | bosh-1 managed vms
 
 ## Basic setup
 
@@ -51,15 +39,14 @@ We are going to run esxcli from Docker because there are not Mac version yet.
   diskutil unmountDisk $D
   ```
   
- - install ESXi license
 
 ### install vCenter
 - Import the OVA file
 - Select `small` type
+- install licenses
 
 ### create a single node cluster
 Turn on DRS, so that we can create resource pool
-
 
 ## Labs
 
@@ -81,3 +68,15 @@ Or
 - clone 3 ESX vms
     - enable vSAN on VMkernel nic
 - create a cluster with DRS and vSAN enabled
+
+## Appendix: IP addresses
+
+192.168.1.x | host
+-|-
+1  | gw, dns
+5  | jumpbox
+6  | bosh-1
+88 | native ESXi
+89 | vcenter
+90-92 | vsan ESXi
+100-109 | bosh-1 managed vms
